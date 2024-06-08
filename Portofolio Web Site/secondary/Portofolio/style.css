@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+}
+
+body{
+    background: #202545;
+    color: #fff;
+}
+
+.header{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 1;
+}
+
+.navbar a{
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+    opacity: 1;
+}
+
+.navbar a:hover,
+.navbar a.active{
+    color: #0ef;
+}
+
+#Portofolio{
+    text-align: center;
+    margin-top: 75px;
+}
+
+#Portofolio .row{
+    display: flex;
+    justify-content: space-between;
+}
+
+#Portofolio .box_container{
+    width: 40%;
+    margin: auto;
+    margin: 30px;
+}
+
+#Portofolio h1{
+    font-size: 50px;
+    margin-bottom: 25px;
+}
+
+#Portofolio .box_container .box_list{
+    padding: 10px;
+    border: #0ef 10px inset;
+    border-radius: 50px;
+    margin-bottom: 70px;
+}
+
+#Portofolio a{
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    transition: .2s;
+}
+
+#Portofolio a:hover{
+    color: #0ef;
+}
+
