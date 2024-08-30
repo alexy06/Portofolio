@@ -98,27 +98,45 @@ body{
     background: linear-gradient(135deg, rgba(142, 172, 242, 1)0%, rgba(92, 123, 193, 1)50%, rgba(77, 98, 145, 1)100%);
 }
 
-.bar .html_css{
-    width: 90%;
-    animation: html_css 3s;
+.bar .prog100{
+    width: 100%;
+    animation: prog100 1.5s;
 }
 
-.bar .c_cplusplus{
+.bar .prog90{
     width: 90%;
-    animation: c_cplusplus 3s;
+    animation: prog90 1.5s;
 }
 
-.bar .javascript{
-    width: 90%;
-    animation: javascript 3s;
+.bar .prog75{
+    width: 75%;
+    animation: prog75 1.5s;
 }
 
-.bar .csharp{
-    width: 90%;
-    animation: csharp 3s;
+.bar .prog25{
+    width: 25%;
+    animation: prog25 1.5s;
 }
 
-@keyframes html_css {
+@keyframes prog25 {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 25%;
+    }
+}
+
+@keyframes prog75 {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 75%;
+    }
+}
+
+@keyframes prog90 {
     0%{
         width: 0%;
     }
@@ -127,30 +145,12 @@ body{
     }
 }
 
-@keyframes javascript {
+@keyframes prog100 {
     0%{
         width: 0%;
     }
     100%{
-        width: 90%;
-    }
-}
-
-@keyframes c_cplusplus {
-    0%{
-        width: 0%;
-    }
-    100%{
-        width: 90%;
-    }
-}
-
-@keyframes csharp {
-    0%{
-        width: 0%;
-    }
-    100%{
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -189,45 +189,23 @@ body{
     font-weight: 600;
 }
 
-.container .tw{
-    background: conic-gradient(#3268E6 calc(3.6*75deg), transparent 0deg);
-    animation: tw 3s linear;
-}
 
-.container .creativity{
+.container .c100{
     background: conic-gradient(#3268E6 calc(3.6*100deg), transparent 0deg);
-    animation: creativity 3s linear;
+    animation: c100 1.5s linear;
 }
 
-.container .ct{
-    background: conic-gradient(#3268E6 calc(3.6*100deg), transparent 0deg);
-    animation: ct 3s linear;
-}
-
-.container .ps{
+.container .c90{
     background: conic-gradient(#3268E6 calc(3.6*90deg), transparent 0deg);
-    animation: ps 3s linear;
+    animation: c90 1.5s linear;
 }
 
-@keyframes tw {
-    0%{
-        background: conic-gradient(#3268E6 calc(3.6deg), transparent 0deg);
-    }
-    25%{
-        background: conic-gradient(#3268E6 calc(18.75 * 3.6deg), transparent 0deg);
-    }
-    50%{
-        background: conic-gradient(#3268E6 calc(37.5 * 3.6deg), transparent 0deg);
-    }
-    75%{
-        background: conic-gradient(#3268E6 calc(56.25 * 3.6deg), transparent 0deg);
-    }
-    100%{
-        background: conic-gradient(#3268E6 calc(75 * 3.6deg), transparent 0deg);
-    }
+.container .c75{
+    background: conic-gradient(#3268E6 calc(3.6*75deg), transparent 0deg);
+    animation: c75 1.5s linear;
 }
 
-@keyframes creativity {
+@keyframes c100 {
     0%{
         background: conic-gradient(#3268E6 calc(3.6deg), transparent 0deg);
     }
@@ -245,25 +223,7 @@ body{
     }
 }
 
-@keyframes ct {
-    0%{
-        background: conic-gradient(#3268E6 calc(3.6deg), transparent 0deg);
-    }
-    25%{
-        background: conic-gradient(#3268E6 calc(25 * 3.6deg), transparent 0deg);
-    }
-    50%{
-        background: conic-gradient(#3268E6 calc(50 * 3.6deg), transparent 0deg);
-    }
-    75%{
-        background: conic-gradient(#3268E6 calc(75 * 3.6deg), transparent 0deg);
-    }
-    100%{
-        background: conic-gradient(#3268E6 calc(100 * 3.6deg), transparent 0deg);
-    }
-}
-
-@keyframes ps {
+@keyframes c90 {
     0%{
         background: conic-gradient(#3268E6 calc(3.6deg), transparent 0deg);
     }
@@ -281,3 +241,20 @@ body{
     }
 }
 
+@keyframes c75 {
+    0%{
+        background: conic-gradient(#3268E6 calc(3.6deg), transparent 0deg);
+    }
+    25%{
+        background: conic-gradient(#3268E6 calc(18.75 * 3.6deg), transparent 0deg);
+    }
+    50%{
+        background: conic-gradient(#3268E6 calc(37.5 * 3.6deg), transparent 0deg);
+    }
+    75%{
+        background: conic-gradient(#3268E6 calc(56.25 * 3.6deg), transparent 0deg);
+    }
+    100%{
+        background: conic-gradient(#3268E6 calc(75 * 3.6deg), transparent 0deg);
+    }
+}
