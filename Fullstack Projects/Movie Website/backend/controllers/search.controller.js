@@ -1,0 +1,138 @@
+import { fetchFromTMDB } from "../services/tdmb.service.js";
+import { User } from "../models/user.model.js";
+
+export async function searchPerson(req, res) {
+  const { query } = req.params;
+  try {
+    const response = await fetchFromTMDB(
+      `https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=1`
+    );
+
+    if (response.results.length === 0) {
+      return res.status(404).send(null);
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        searchHistory: {
+          id: response.results[0].id,
+          image: response.results[0].profile_path,
+          title: response.results[0].name,
+          searchType: "person",
+          createdAt: new Date(),
+        },
+      },
+    });
+
+    /*const updatedUser = await User.findByIdAndUpdate(
+      req.user._id, // The user's ID
+      {
+        $push: {
+          searchHistory: {
+            id: response.results[0].id,
+            image: response.results[0].profile_path,
+            title: response.results[0].name,
+            searchType: "person",
+            createdAt: new Date(), // Timestamp of when the search was made
+          },
+        },
+      },
+      { new: true } // Ensures the updated document is returned
+    );*/
+
+    //res.status(200).json({ message: "Search history updated", updatedUser });
+
+    res.status(200).json({ success: true, content: response.results });
+  } catch (error) {
+    console.log("Error on searchPerson controller: ", error.message);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}
+export async function searchMovies(req, res) {
+  const { query } = req.params;
+  try {
+    const response = await fetchFromTMDB(
+      `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`
+    );
+
+    if (response.results.length === 0) {
+      return res.status(404).send(null);
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        searchHistory: {
+          id: response.results[0].id,
+          image: response.results[0].poster_path,
+          title: response.results[0].title,
+          searchType: "movie",
+          createdAt: new Date(),
+        },
+      },
+    });
+
+    res.status(200).json({ success: true, content: response.results });
+  } catch (error) {
+    console.log("Error on searchMovie controller: ", error.message);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}
+
+export async function searchTv(req, res) {
+  const { query } = req.params;
+  try {
+    const response = await fetchFromTMDB(
+      `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`
+    );
+
+    if (response.results.length === 0) {
+      return res.status(404).send(null);
+    }
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        searchHistory: {
+          id: response.results[0].id,
+          image: response.results[0].poster_path,
+          title: response.results[0].name,
+          searchType: "tv",
+          createdAt: new Date(),
+        },
+      },
+    });
+
+    res.status(200).json({ success: true, content: response.results });
+  } catch (error) {
+    console.log("Error on searchPerson controller: ", error.message);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}
+
+export async function getSearchHistory(req, res) {
+  try {
+    res.status(200).json({
+      success: true,
+      content: await User.findById(req.user._id).select("searchHistory"),
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}
+
+export async function removeItemFromSearchHistory(req, res) {
+  const { id } = req.params;
+  try {
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: {
+        searchHistory: { id: id },
+      },
+    });
+
+    res
+      .status(200)
+      .json({ success: true, message: "Item removed from search history" });
+  } catch (error) {
+    console.log("Error removing item from search history");
+    res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+}
